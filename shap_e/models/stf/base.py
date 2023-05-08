@@ -15,7 +15,7 @@ class Model(ABC):
         query: Query,
         params: Optional[Dict[str, torch.Tensor]] = None,
         options: Optional[Dict[str, Any]] = None,
-    ) -> AttrDict[str, Any]:
+    ):
         """
         Predict an attribute given position
         """
