@@ -270,7 +270,7 @@ class NeRSTFRenderer(RayRenderer, STFRendererBase):
         self,
         query: Query,
         params: Dict[str, torch.Tensor],
-        options: AttrDict[str, Any],
+        options: AttrDict,
     ) -> torch.Tensor:
         if self.sdf is not None:
             return self.sdf(query, params=subdict(params, "sdf"), options=options).signed_distance
