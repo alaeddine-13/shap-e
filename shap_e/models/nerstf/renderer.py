@@ -63,8 +63,8 @@ class NeRSTFRenderer(RayRenderer, STFRendererBase):
     def _query(
         self,
         query: Query,
-        params: AttrDict[str, torch.Tensor],
-        options: AttrDict[str, Any],
+        params: AttrDict,
+        options: AttrDict,
     ) -> AttrDict:
         no_dir_query = query.copy()
         no_dir_query.direction = None
@@ -281,7 +281,7 @@ class NeRSTFRenderer(RayRenderer, STFRendererBase):
         self,
         query: Query,
         params: Dict[str, torch.Tensor],
-        options: AttrDict[str, Any],
+        options: AttrDict,
     ) -> torch.Tensor:
         if self.tf is not None:
             return self.tf(query, params=subdict(params, "tf"), options=options).channels

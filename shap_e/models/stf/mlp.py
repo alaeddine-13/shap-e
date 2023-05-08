@@ -123,7 +123,7 @@ class MLPModel(MetaModule, Model):
         return self.output_activation(h_final)
 
     def _run_mlp(
-        self, position: torch.Tensor, direction: torch.Tensor, params: AttrDict[str, torch.Tensor]
+        self, position: torch.Tensor, direction: torch.Tensor, params: AttrDict
     ) -> Tuple[torch.Tensor, torch.Tensor]:
         """
         :return: the final and directionless activations at the given query
@@ -190,7 +190,7 @@ class MLPSDFModel(MLPModel):
         query: Query,
         params: Optional[Dict[str, torch.Tensor]] = None,
         options: Optional[Dict[str, Any]] = None,
-    ) -> AttrDict[str, Any]:
+    ) -> AttrDict:
         signed_distance = super().forward(query=query, params=params, options=options)
         return AttrDict(signed_distance=signed_distance)
 
@@ -208,6 +208,6 @@ class MLPTextureFieldModel(MLPModel):
         query: Query,
         params: Optional[Dict[str, torch.Tensor]] = None,
         options: Optional[Dict[str, Any]] = None,
-    ) -> AttrDict[str, Any]:
+    ) -> AttrDict:
         channels = super().forward(query=query, params=params, options=options)
         return AttrDict(channels=channels)
